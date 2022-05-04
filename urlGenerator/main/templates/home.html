@@ -11,7 +11,14 @@
         {{ form.as_p }}
         <button type="submit" name="button" >Save</button>
     </form>
-
     <h1>{{ a }} </h1>
+
+    <ul>
+        {% for url in data %}
+            <li>Short: <a href="{% url 'Home' token=url.short_url  %}">{{url.short_url}}</a> Long: {{url.long_url}}</li>
+        {% endfor %}
+    </ul>
+
+
 </body>
 </html>

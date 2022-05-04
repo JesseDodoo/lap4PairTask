@@ -11,6 +11,7 @@ def Home(request, token):
 def Make(request):
     form = UrlForm(request.POST)
     a = ''
+    data = short_url.objects.all()
     if request.method == 'POST':
         if form.is_valid():
             NewUrl = form.save(commit=False)
@@ -20,4 +21,4 @@ def Make(request):
         else:
             form = UrlForm()
             a = "Invalid Url"  
-    return render(request, 'home.html', {'form': form, 'a': a})
+    return render(request, 'home.html', {'form': form, 'a': a, 'data': data})
